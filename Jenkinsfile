@@ -57,6 +57,8 @@ pipeline {
       steps {
         container('python') {
           dir('./charts/rsvp') {
+            // Intento de corregir los problemas de lectura en el repo de git
+            sh "jx step git credentials"
             sh "jx step changelog --version v\$(cat ../../VERSION)"
 
             // release the helm chart
